@@ -11,9 +11,8 @@ export const SITE = {
   tagline: 'Building the AI-Ready Workforce',
   mission: '100 million workers AI-ready by 2030.',
 
-  // PLACEHOLDER: final production domain. NOTE: the contact email below is on
-  // .com — confirm whether the site should live at .com to match (see §14 Q1).
-  domain: 'https://project100million.org',
+  // Production domain (matches the .com contact email below).
+  domain: 'https://project100million.com',
 
   // Contact address that receives expressions of interest.
   email: 'robert@project100million.com',
