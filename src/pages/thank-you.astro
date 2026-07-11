@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../data/site';
+---
+
+<Base
+  title="Thank you"
+  description="Thank you for expressing interest in Project 100 Million."
+  path="/thank-you"
+  noindex={true}
+>
+  <section class="section ty">
+    <div class="container container--narrow ty__inner">
+      <span class="ty__check" aria-hidden="true">✓</span>
+      <p class="eyebrow eyebrow--plain">Interest received</p>
+      <h1 class="ty__title">Thank you. We’ve got it.</h1>
+      <p class="ty__lead">
+        Your interest in Project 100 Million has been received. A confirmation is on its way to your
+        inbox, and a member of the team will be in touch.
+      </p>
+      <p class="ty__note">
+        There’s nothing else you need to do. This is not a contract. A reply simply opens the
+        conversation.
+      </p>
+      <div class="ty__actions">
+        <a class="btn btn--ghost" href="/">Back to home</a>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ty {
+    text-align: center;
+    min-height: 52vh;
+    display: grid;
+    place-items: center;
+  }
+  .ty__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .ty__check {
+    display: grid;
+    place-items: center;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: linear-gradient(150deg, var(--teal), var(--seafoam));
+    color: #fff;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .ty__title {
+    font-size: var(--fs-h1);
+    margin-top: 0.75rem;
+  }
+  .ty__lead {
+    margin-top: 1.25rem;
+    font-size: var(--fs-lead);
+    color: var(--slate-70);
+    max-width: 48ch;
+  }
+  .ty__note {
+    margin-top: 1rem;
+    color: var(--slate-50);
+    max-width: 44ch;
+  }
+  .ty__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 2.25rem;
+  }
+</style>

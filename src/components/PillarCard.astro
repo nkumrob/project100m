@@ -1,0 +1,60 @@
+---
+import type { Pillar } from '../data/pillars';
+export interface Props {
+  pillar: Pillar;
+  index: number;
+}
+const { pillar, index } = Astro.props;
+const num = String(index + 1).padStart(2, '0');
+---
+
+<article class="card pillar">
+  <span class="pillar__num" aria-hidden="true">{num}</span>
+  <h3 class="pillar__name">{pillar.name}</h3>
+  <p class="pillar__desc">{pillar.description}</p>
+  <p class="pillar__outcome">
+    <span class="pillar__outcome-label">Business outcome</span>
+    {pillar.outcome}
+  </p>
+</article>
+
+<style>
+  .pillar {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .pillar__num {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--slate-50);
+  }
+  .pillar__name {
+    font-size: var(--fs-h3);
+    margin-top: 0.6rem;
+  }
+  .pillar__desc {
+    margin-top: 0.75rem;
+    color: var(--slate-70);
+    font-size: 0.98rem;
+    flex-grow: 1;
+  }
+  .pillar__outcome {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    color: var(--teal-deep);
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .pillar__outcome-label {
+    display: block;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--slate-50);
+    font-weight: 600;
+    margin-bottom: 0.2rem;
+  }
+</style>

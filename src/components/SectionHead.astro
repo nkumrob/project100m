@@ -1,0 +1,16 @@
+---
+/** Eyebrow + H2 + optional lead paragraph, the recurring section opener. */
+export interface Props {
+  eyebrow: string;
+  heading: string;
+  lead?: string;
+  id?: string;
+}
+const { eyebrow, heading, lead, id } = Astro.props;
+---
+
+<div class="section-head">
+  <p class="eyebrow">{eyebrow}</p>
+  <h2 id={id}>{heading}</h2>
+  {lead && <p class="lead">{lead}</p>}
+</div>

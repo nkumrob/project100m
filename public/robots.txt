@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# PLACEHOLDER: sitemap points at the production domain set in astro.config.mjs.
+Sitemap: https://project100million.org/sitemap-index.xml

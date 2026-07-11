@@ -1,0 +1,56 @@
+---
+/**
+ * Compact CSS wordmark for the header/footer, crisp at small sizes where the
+ * tall glass-logo image would not read. Echoes the logo: "100" in the teal→ice
+ * gradient, the rest in slate ink.
+ */
+export interface Props {
+  /** Render as a link to home. */
+  href?: string;
+  class?: string;
+}
+const { href = '/', class: className = '' } = Astro.props;
+const Tag = href ? 'a' : 'span';
+---
+
+<Tag href={href || undefined} class:list={['wordmark', className]} aria-label="Project 100 Million: Building the AI-Ready Workforce">
+  <span class="wordmark__project" aria-hidden="true">Project</span>
+  <span class="wordmark__num" aria-hidden="true">100</span>
+  <span class="wordmark__million" aria-hidden="true">Million</span>
+</Tag>
+
+<style>
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.4ch;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .wordmark__project {
+    color: var(--slate-50);
+    font-weight: 600;
+    font-size: 0.92em;
+  }
+
+  .wordmark__num {
+    background: linear-gradient(150deg, var(--teal-deep), var(--teal) 45%, var(--seafoam) 75%, var(--ice));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--teal);
+    font-weight: 800;
+  }
+
+  .wordmark__million {
+    color: var(--slate);
+  }
+
+  a.wordmark:hover .wordmark__million {
+    color: var(--teal-deep);
+  }
+</style>

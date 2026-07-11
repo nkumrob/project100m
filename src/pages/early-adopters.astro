@@ -1,0 +1,128 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import { SITE } from '../data/site';
+import { earlyAdopterReceives } from '../data/pillars';
+
+const asks = [
+  'Your organization’s name',
+  'A primary contact',
+  '2–3 workforce or AI-readiness challenges you’re facing',
+];
+---
+
+<Base
+  title="Early Adopters"
+  description="Early interest in Project 100 Million is now open, for a select few. Expressing interest is one short reply. This is not a contract: no commitment, no obligation, no cost."
+  path="/early-adopters"
+>
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        eyebrow="Early adopters"
+        heading="Early interest is now open, for a select few"
+        lead="We are gathering early interest from a limited number of organizations. Selected partners join the founding pilot cohort at no commercial cost."
+      />
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="grid grid--2 columns">
+        <div class="col card">
+          <h2 class="col__title">Expressing interest is one short reply</h2>
+          <ul class="col__list col__list--ask">
+            {asks.map((a) => <li>{a}</li>)}
+          </ul>
+          <p class="col__foot">That’s the whole ask. A reply simply opens the conversation.</p>
+        </div>
+
+        <div class="col card card--tint">
+          <h2 class="col__title">If selected, your organization receives</h2>
+          <ul class="col__list col__list--get">
+            {earlyAdopterReceives.map((r) => <li>{r}</li>)}
+          </ul>
+        </div>
+      </div>
+
+      {/* Reassurance block (PRD §7.5) */}
+      <aside class="reassurance" aria-label="What expressing interest means">
+        <p class="reassurance__lead"><strong>This is not a contract.</strong></p>
+        <p class="reassurance__body">
+          No commitment, no obligation, no cost. A reply simply opens the conversation.
+        </p>
+        <a class="btn btn--primary" href="/express-interest">Express Interest</a>
+      </aside>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .columns {
+    align-items: stretch;
+  }
+  .col {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .col__title {
+    font-size: var(--fs-h3);
+  }
+  .col__list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    display: grid;
+    gap: 1rem;
+    flex-grow: 1;
+  }
+  .col__list li {
+    position: relative;
+    padding-left: 1.75rem;
+    color: var(--slate-70);
+  }
+  .col__list li::before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-weight: 700;
+  }
+  .col__list--ask li::before {
+    content: '›';
+    color: var(--seafoam);
+    font-size: 1.2em;
+    line-height: 1;
+  }
+  .col__list--get li::before {
+    content: '✓';
+    color: var(--teal);
+  }
+  .col__foot {
+    margin-top: 1.5rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--line);
+    color: var(--slate-50);
+    font-size: 0.95rem;
+  }
+
+  .reassurance {
+    margin-top: clamp(2rem, 1rem + 3vw, 3rem);
+    text-align: center;
+    padding: clamp(2rem, 1rem + 3vw, 3rem);
+    border-radius: var(--radius-lg);
+    background:
+      radial-gradient(90% 120% at 50% 0%, rgba(127, 196, 184, 0.16), transparent 60%),
+      var(--tint);
+  }
+  .reassurance__lead {
+    font-size: var(--fs-lead);
+    color: var(--teal-deep);
+  }
+  .reassurance__body {
+    margin-block: 0.75rem 1.75rem;
+    color: var(--slate-70);
+    max-width: 46ch;
+    margin-inline: auto;
+  }
+</style>

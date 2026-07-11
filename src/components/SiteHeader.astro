@@ -1,0 +1,209 @@
+---
+import Wordmark from './Wordmark.astro';
+import { NAV } from '../data/site';
+
+export interface Props {
+  hideCta?: boolean;
+}
+const { hideCta = false } = Astro.props;
+const current = Astro.url.pathname;
+const isActive = (href: string) => current === href || current === `${href}/`;
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <Wordmark class="site-header__brand" />
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true" />
+    <label for="nav-toggle" class="nav-burger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="site-nav" aria-label="Primary">
+      <ul>
+        {
+          NAV.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      {
+        !hideCta && (
+          <a class="btn btn--primary site-nav__cta" href="/express-interest">
+            Express Interest
+          </a>
+        )
+      }
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: saturate(180%) blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    min-height: 68px;
+  }
+
+  .site-header__brand {
+    font-size: 1.15rem;
+    flex-shrink: 0;
+  }
+
+  .site-nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 0.5rem + 1.5vw, 2rem);
+  }
+
+  .site-nav ul {
+    display: flex;
+    align-items: center;
+    gap: clamp(1rem, 0.5rem + 1.2vw, 1.9rem);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .site-nav a {
+    color: var(--slate-70);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding-block: 0.4rem;
+    position: relative;
+  }
+
+  .site-nav a:hover {
+    color: var(--slate);
+  }
+
+  .site-nav a[aria-current='page'] {
+    color: var(--teal-deep);
+    font-weight: 600;
+  }
+
+  .site-nav a[aria-current='page']::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -2px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--teal), var(--seafoam));
+    border-radius: 2px;
+  }
+
+  /* Raised specificity so the CTA label stays white, `.site-nav a` would
+     otherwise override `.btn--primary`'s color. */
+  .site-nav a.site-nav__cta,
+  .site-nav a.site-nav__cta:hover {
+    color: #fff;
+    padding: 0.6rem 1.15rem;
+    font-size: 0.95rem;
+  }
+
+  .site-nav a.site-nav__cta[aria-current]::after {
+    display: none;
+  }
+
+  /* Mobile menu machinery (CSS-only, no JS) */
+  .nav-toggle,
+  .nav-burger {
+    display: none;
+  }
+
+  @media (max-width: 900px) {
+    .nav-burger {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      margin: -0.5rem;
+      padding: 0.5rem;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--slate);
+      border-radius: 2px;
+      transition: transform 0.25s var(--ease), opacity 0.2s var(--ease);
+    }
+
+    .nav-toggle:checked + .nav-burger span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    .nav-toggle:checked + .nav-burger span:nth-child(2) {
+      opacity: 0;
+    }
+    .nav-toggle:checked + .nav-burger span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .site-nav {
+      position: fixed;
+      inset: 68px 0 auto 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--line);
+      padding: 0.5rem clamp(1.25rem, 0.5rem + 3vw, 2.5rem) 1.5rem;
+      box-shadow: var(--shadow-md);
+      transform: translateY(-120%);
+      transition: transform 0.3s var(--ease);
+      max-height: calc(100dvh - 68px);
+      overflow-y: auto;
+    }
+
+    .nav-toggle:checked ~ .site-nav {
+      transform: translateY(0);
+    }
+
+    .site-nav ul {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0;
+    }
+
+    .site-nav li {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .site-nav ul a {
+      display: block;
+      padding: 0.95rem 0;
+      font-size: 1.05rem;
+    }
+
+    .site-nav a[aria-current='page']::after {
+      display: none;
+    }
+
+    .site-nav__cta {
+      margin-top: 1.25rem;
+      width: 100%;
+      padding: 0.9rem 1.15rem;
+    }
+  }
+</style>

@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import SectionHead from '../components/SectionHead.astro';
+import FundingTable from '../components/FundingTable.astro';
+import { SITE } from '../data/site';
+import { totalCommitted } from '../data/funding';
+---
+
+<Base
+  title="Federal Alignment"
+  description="Over $2.5 billion is already committed to AI workforce readiness, the National AI Workforce Investment Act, TechAccess, EDA, DOL programs, WIOA and EO 14277. Project 100 Million helps partners navigate and access these mechanisms."
+  path="/federal-alignment"
+>
+  <section class="section">
+    <div class="container">
+      <SectionHead
+        eyebrow="Federal funding landscape"
+        heading={`${totalCommitted} already committed to AI workforce readiness`}
+        lead="Significant federal funding already exists, and more is being committed, to train workers in AI. Project 100 Million helps partner organizations navigate and access these mechanisms."
+      />
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <FundingTable />
+      <p class="funding-note">
+        <strong>The window matters.</strong> Early movers access these resources and co-design frameworks
+        before demand outpaces supply. Those who wait engage later, when the resources are gone and the
+        gap has widened.
+      </p>
+    </div>
+  </section>
+
+  {/* Positioning */}
+  <section class="section section--tint" aria-labelledby="position-heading">
+    <div class="container container--narrow">
+      <p class="eyebrow">How we help</p>
+      <h2 id="position-heading" class="position__title">
+        We help partners navigate and access these mechanisms.
+      </h2>
+      <p class="position__body">
+        Federal program terms shift as cohorts open and hubs are selected. Rather than restate details
+        that may change, Project 100 Million points partners to the official sources and helps map the
+        funding aligned to their workforce and geography, so the right mechanism reaches the right
+        organization at the right time.
+      </p>
+      <a class="btn btn--primary" href="/express-interest">Express Interest</a>
+      <p class="position__disclaimer">
+        Program names, amounts, and timelines above are summarized from public sources and are subject
+        to change. Always confirm current terms via the official program pages.
+      </p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .funding-note {
+    margin-top: clamp(1.5rem, 1rem + 2vw, 2.5rem);
+    padding: 1.5rem 1.75rem;
+    background: var(--tint);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 var(--radius) var(--radius) 0;
+    color: var(--slate-70);
+    max-width: 70ch;
+  }
+
+  .position__title {
+    font-size: var(--fs-h2);
+    margin-top: 0.9rem;
+    max-width: 20ch;
+  }
+  .position__body {
+    margin-block: 1.25rem 2rem;
+    font-size: var(--fs-lead);
+    color: var(--slate-70);
+  }
+  .position__disclaimer {
+    margin-top: 1.75rem;
+    font-size: 0.85rem;
+    color: var(--slate-50);
+    max-width: 60ch;
+  }
+</style>

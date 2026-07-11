@@ -1,0 +1,92 @@
+---
+import '@fontsource-variable/inter';
+import '../styles/global.css';
+import SiteHeader from '../components/SiteHeader.astro';
+import SiteFooter from '../components/SiteFooter.astro';
+import { SITE } from '../data/site';
+
+export interface Props {
+  title: string;
+  description: string;
+  /** Path-relative canonical, e.g. "/challenge". Defaults to current path. */
+  path?: string;
+  /** Hide the persistent header CTA (e.g. on the Express Interest page itself). */
+  hideCta?: boolean;
+  /** Exclude from search index (e.g. thank-you page). */
+  noindex?: boolean;
+}
+
+const { title, description, path, hideCta = false, noindex = false } = Astro.props;
+
+const canonicalPath = path ?? Astro.url.pathname;
+const canonical = new URL(canonicalPath, Astro.site ?? SITE.domain).href;
+const ogImage = new URL('/assets/og-image.png', Astro.site ?? SITE.domain).href;
+
+const fullTitle =
+  title === SITE.name ? `${SITE.name}: ${SITE.tagline}` : `${title} · ${SITE.name}`;
+
+// Organization + WebSite structured data (PRD §9), helps search engines
+// understand the initiative and render the name/logo in rich results.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Organization',
+      '@id': `${SITE.domain}/#organization`,
+      name: SITE.name,
+      url: SITE.domain,
+      description: `${SITE.tagline}, an initiative to make 100 million workers AI-ready by 2030.`,
+      logo: new URL('/assets/logo.png', SITE.domain).href,
+      email: SITE.email,
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE.domain}/#website`,
+      url: SITE.domain,
+      name: SITE.name,
+      publisher: { '@id': `${SITE.domain}/#organization` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href={canonical} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
+
+    <meta name="theme-color" content="#2E8B7F" />
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={`${SITE.name}: ${SITE.tagline}`} />
+
+    {/* Twitter */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <SiteHeader hideCta={hideCta} />
+    <main id="main">
+      <slot />
+    </main>
+    <SiteFooter />
+  </body>
+</html>
