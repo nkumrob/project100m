@@ -11,11 +11,12 @@ export const SITE = {
   tagline: 'Building the AI-Ready Workforce',
   mission: '100 million workers AI-ready by 2030.',
 
-  // PLACEHOLDER: final production domain (PRD §14 Q1, .org preferred).
+  // PLACEHOLDER: final production domain. NOTE: the contact email below is on
+  // .com — confirm whether the site should live at .com to match (see §14 Q1).
   domain: 'https://project100million.org',
 
-  // PLACEHOLDER: professional address on the site domain (PRD §10).
-  email: 'interest@project100million.org',
+  // Contact address that receives expressions of interest.
+  email: 'robert@project100million.com',
 
   // PLACEHOLDER: legal / sponsor identity for the footer (PRD §14 Q4).
   legalEntity: 'Project 100 Million',
