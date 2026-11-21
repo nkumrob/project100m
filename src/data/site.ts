@@ -12,10 +12,10 @@ export const SITE = {
   mission: '100 million workers AI-ready by 2030.',
 
   // Production domain (matches the .com contact email below).
-  domain: 'https://project100million.com',
+  domain: 'https://project100m.com',
 
   // Contact address that receives expressions of interest.
-  email: 'robert@project100million.com',
+  email: 'robert@project100m.net',
 
   // PLACEHOLDER: legal / sponsor identity for the footer (PRD §14 Q4).
   legalEntity: 'Project 100 Million',

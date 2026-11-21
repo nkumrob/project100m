@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // PLACEHOLDER: replace with the final production domain before launch.
 // Used for canonical URLs, sitemap, and Open Graph absolute URLs.
-export const SITE_URL = 'https://project100million.com';
+export const SITE_URL = 'https://project100m.com';
 
 // https://astro.build/config
 export default defineConfig({

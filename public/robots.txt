@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://project100million.com/sitemap-index.xml
+Sitemap: https://project100m.com/sitemap-index.xml
