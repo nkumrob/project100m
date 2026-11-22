@@ -1,0 +1,5 @@
+{
+  "redirects": [
+    { "source": "/(challenge|initiative|federal-alignment|early-adopters|express-interest|contact|privacy|thank-you)/?", "destination": "/", "permanent": true }
+  ]
+}
