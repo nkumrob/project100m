@@ -1,5 +1,84 @@
 {
   "redirects": [
-    { "source": "/(challenge|initiative|federal-alignment|early-adopters|express-interest|contact|privacy|thank-you)/?", "destination": "/", "permanent": true }
+    {
+      "source": "/challenge",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/challenge/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/initiative",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/initiative/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/federal-alignment",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/federal-alignment/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/early-adopters",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/early-adopters/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/express-interest",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/express-interest/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/privacy/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/thank-you/",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }
