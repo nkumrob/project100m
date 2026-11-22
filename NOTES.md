@@ -30,7 +30,8 @@ which didn't match.
 - Old Instantly campaigns "SEQUENCE A — WORKFORCE SYSTEMS" (completed) and "SEQUENCE B — SMALL & MID-SIZED BUSINESSES"
   (paused) still carry AI-workforce copy. They aren't sending. Archive them, or never resume them.
 - The backlink campaigns (Wedar → .net mailboxes, Heirloom Money → .us, Product Review → .work) are drafts in Instantly.
-  The outreach engine in `~/backlink-engine` fills and launches them.
+  The outreach engine in `~/backlink-engine` (GitHub: nkumrob/backlink-engine, private, branch `master`) fills and
+  launches them.
 - Design polish ideas: "How we build" is text-only. A small live element (for example today's Wedar pick) would add life.
   On narrow desktop widths the collapsed "Heirloom Money" card name gets clipped.
 
